@@ -1,0 +1,175 @@
+swagger: "2.0"
+info: 
+  title: SimpleAPI
+  version: 1.0.0
+  contact:
+    email: mohammadicecream@yahoo.com
+  servers:
+    -url: "http://localhost:5000"
+    description: Local server
+schemes: [http,https]
+paths:
+  /api/v1/getBooks:
+    get:
+      summary: Get all books
+      description: Get all books
+      tags: ["Book API"]
+      responses:
+        200:
+          description: Successful operation
+          content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  description:
+                    type: string
+  /api/v1/getBook/{bookId}:
+    get:
+      summary : Get a book by id
+      description: Get a book by id
+      tags: ["Book API"]
+      parameters:
+        - name: bookId
+          in: path
+          description: Enter The Book Id You Want To Get
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                author:
+                  type: string
+                description:
+                  type: string
+  /api/v1/addBook:
+    get:
+      summary: Get all books
+      description: Get all books
+      tags: ["Book API"]
+      parameters:
+        - in: body
+          name: book
+          description: The book to create.
+          schema:
+            type: object
+            required:
+              - title
+              - author
+              - description
+            properties:
+              title:
+                type: string
+              author:
+                type: string
+              description:
+                type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  author:
+                    type: string
+                  description:
+                    type: string
+  /api/v1/updateBook/{bookId}:
+    get:
+      summary : Update a book by id
+      description: Update a book by id
+      tags: ["Book API"]
+      parameters:
+        - name: bookId
+          in: path
+          description: Enter The Book Id You Want To Get
+          required: true
+          schema:
+            type: string
+        - in: body
+          name: book
+          description: The book to Update.
+          schema:
+            type: object
+            required:
+              - title
+              - author
+              - description
+            properties:
+              title:
+                type: string
+              author:
+                type: string
+              description:
+                type: string
+        
+      responses:
+        200:
+          description: Successful operation
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                author:
+                  type: string
+                description:
+                  type: string
+  /api/v1/deleteBook/{bookId}:
+    get:
+      summary : Delete a book by id
+      description: Delete a book by id
+      tags: ["Book API"]
+      parameters:
+        - name: bookId
+          in: path
+          description: Enter The Book Id You Want To Delete
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Successful operation
+          content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                title:
+                  type: string
+                author:
+                  type: string
+                description:
+                  type: string
